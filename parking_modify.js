@@ -1,5 +1,9 @@
+// 停车时间&金额修改脚本
 let body = $response.body;
-// 直接把所有金额数字替换成0
-body = body.replace(/"amount":\s*\d+/g, '"amount": 0');
-body = body.replace(/"payAmount":\s*\d+/g, '"payAmount": 0');
+let obj = JSON.parse(body);
+
+// 改进场时间（格式：YYYY-MM-DD HH:mm:ss，可自行修改）
+obj.data.data.inTime = "2026-04-03 23:00:00";
+
+body = JSON.stringify(obj);
 $done({ body });
