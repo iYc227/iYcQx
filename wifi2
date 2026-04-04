@@ -1,11 +1,8 @@
 let body = $response.body;
 let obj = JSON.parse(body);
 
-// 核心修改：把下单接口的限制提示改成成功
-obj.msg = "下单成功";
-obj.code = 0;
-// 可选：如果接口需要返回订单号，加一行（没有也能生效）
-obj.info = [{"order_id":"914353276"}];
+// 只改第三个套餐：20G体验包的价格
+obj.info[4].package_money_price = "0.00";
 
 body = JSON.stringify(obj);
 $done({ body });
