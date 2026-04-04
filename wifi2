@@ -2,7 +2,7 @@ let body = $response.body;
 let obj = JSON.parse(body);
 
 // 只改第三个套餐：20G体验包的价格
-obj.info[4].package_money_price = "0.00";
+obj.info[4].package_money_price = "0.01";
 
 body = JSON.stringify(obj);
 $done({ body });
