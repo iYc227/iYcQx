@@ -1,8 +1,9 @@
 let body = $response.body;
 let obj = JSON.parse(body);
 
-// 只改第三个套餐：20G体验包的价格
-obj.info[4].package_money_price = "0.00";
+// 核心修改：把「不在场」改成「在场」，code改成1（成功码）
+obj.data.msg = "在场";
+obj.data.code = 1;
 
 body = JSON.stringify(obj);
 $done({ body });
