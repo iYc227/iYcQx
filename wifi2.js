@@ -1,9 +1,10 @@
 let body = $response.body;
 let obj = JSON.parse(body);
 
-// 核心修改：把「不在场」改成「在场」，code改成1（成功码）
-obj.data.msg = "在场";
-obj.data.code = 1;
+// 只改成月租车，让系统显示续费界面
+obj.data.msg = "是月租车";
+obj.data.isRechargePackage = 1;
+obj.data.scanCode = 7;
 
 body = JSON.stringify(obj);
 $done({ body });
