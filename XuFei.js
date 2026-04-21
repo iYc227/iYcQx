@@ -1,15 +1,11 @@
-// 直接复制整个代码到 Quantumult X 的「重写 - 脚本」里
-let url = $request.url;
-
-// 拦截目标接口：https://api.iosxx.org/v4/client/key-v3
-if (url.indexOf("/v4/client/key-v3") !== -1) {
-    // 强制返回服务端正确的 JSON 结构，模拟登录成功
-    let response = {
-        status: 200,
-        headers: {
+// 适配你这个接口的 Quantumult X 重写脚本
+$done = function(s) {
+    return {
+        "status": 200,
+        "headers": {
             "Content-Type": "text/html"
         },
-        body: JSON.stringify({
+        "body": JSON.stringify({
             "code": 0,
             "msg": "success",
             "data": {
@@ -20,5 +16,4 @@ if (url.indexOf("/v4/client/key-v3") !== -1) {
             }
         })
     };
-    $done(response);
-}
+};
