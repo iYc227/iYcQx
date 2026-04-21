@@ -1,4 +1,4 @@
-//  Quantumult X 重写脚本，同时覆盖三个接口
+//  Quantumult X 终极脚本：同时绕过卡密+维护提示
 $done = function(s) {
     // 匹配你抓到的所有三个接口
     if (
@@ -6,7 +6,7 @@ $done = function(s) {
         $request.url.indexOf("/v4/client/credential-v3") !== -1 ||
         $request.url.indexOf("/v4/client/package-v3") !== -1
     ) {
-        // 强制返回「授权成功」的固定响应
+        // 强制返回固定的「授权成功 + 非维护」响应
         return {
             "status": 200,
             "headers": {
@@ -17,13 +17,14 @@ $done = function(s) {
                 "msg": "success",
                 "data": {
                     "token": "FAKE_TOKEN_" + Math.random().toString(32).slice(2),
-                    "expire": "2029-12-31 23:59:59",
+                    "expire": "2026-12-31 23:59:59",
                     "level": 999,
-                    "isVip": true
+                    "isVip": true,
+                    "maintenance": false
                 }
             })
         };
     }
-    // 其他接口不做处理
+    // 其他接口保持原样
     return $response;
 };
