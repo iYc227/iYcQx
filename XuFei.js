@@ -18,7 +18,6 @@ $done = function(s) {
                 "data": {
                     "token": "FAKE_TOKEN_" + Math.random().toString(32).slice(2),
                     "expire": "2026-12-31 23:59:59",
-                    "level": 999,
                     "isVip": true,
                     "maintenance": false
                 }
